@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-=1!akoe$k62=wpk0y++d&no_vg4#^c*%8%4)@=4v+-fw!7j1^-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'api.refrigeracionroberto.com',
+    'refrigeracionroberto.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
