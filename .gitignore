@@ -8,3 +8,7 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Django-specific files
+db.sqlite3
+media/
