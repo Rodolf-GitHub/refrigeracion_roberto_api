@@ -3,6 +3,8 @@ from django.utils.html import format_html
 
 from .models import Proyecto, ProyectoImagen
 
+admin.site.site_url = 'https://refrigeracionroberto.com/'
+
 
 class ProyectoImagenInline(admin.TabularInline):
 	model = ProyectoImagen
