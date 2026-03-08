@@ -66,6 +66,14 @@ JAZZMIN_SETTINGS = {
     'topmenu_links': [
         {'name': 'Volver a la web', 'url': 'https://refrigeracionroberto.com/', 'new_window': True, 'icon': 'fas fa-globe'},
     ],
+    'custom_links': {
+        'proyectos': [{
+            'name': 'Ir a la web',
+            'url': 'https://refrigeracionroberto.com/',
+            'icon': 'fas fa-external-link-alt',
+            'new_window': True,
+        }],
+    },
     'icons': {
         'proyectos.proyecto': 'fas fa-briefcase',
         'proyectos.proyectoimagen': 'fas fa-images',

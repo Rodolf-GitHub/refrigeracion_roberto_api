@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         input.addEventListener('change', function () {
             var file = this.files && this.files[0];
-            var row = this.closest('tr') || this.closest('.inline-related');
+            var row = this.closest('tr') || this.closest('.inline-related') || this.closest('.form-row');
             if (!row) return;
             var img = row.querySelector('.preview-img');
             var placeholder = row.querySelector('.preview-placeholder');
@@ -24,14 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Inputs existentes
-    document.querySelectorAll('#imagenes-group input[type="file"]').forEach(attachPreview);
-
-    // Nuevos inlines: observar cambios en el DOM
-    var group = document.getElementById('imagenes-group');
-    if (group) {
-        new MutationObserver(function () {
-            group.querySelectorAll('input[type="file"]').forEach(attachPreview);
-        }).observe(group, { childList: true, subtree: true });
+    function bindAll() {
+        document.querySelectorAll('input[type="file"]').forEach(attachPreview);
     }
+
+    bindAll();
+
+    // Observar todo el body por si se añaden inlines dinámicamente
+    new MutationObserver(bindAll).observe(document.body, { childList: true, subtree: true });
 });
