@@ -63,6 +63,9 @@ JAZZMIN_SETTINGS = {
     'copyright': 'Refrigeración Roberto',
     'show_ui_builder': False,
     'navigation_expanded': True,
+    'topmenu_links': [
+        {'name': 'Volver a la web', 'url': 'https://refrigeracionroberto.com/', 'new_window': True, 'icon': 'fas fa-globe'},
+    ],
     'icons': {
         'proyectos.proyecto': 'fas fa-briefcase',
         'proyectos.proyectoimagen': 'fas fa-images',
