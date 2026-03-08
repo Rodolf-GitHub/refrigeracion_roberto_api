@@ -43,6 +43,7 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,6 +53,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'proyectos',
 ]
+
+JAZZMIN_SETTINGS = {
+    'site_title': 'Refrigeración Roberto',
+    'site_header': 'Refrigeración Roberto',
+    'site_brand': 'Refrigeración Roberto',
+    'welcome_sign': 'Bienvenido al panel de administración',
+    'site_url': 'https://refrigeracionroberto.com/',
+    'copyright': 'Refrigeración Roberto',
+    'show_ui_builder': False,
+    'navigation_expanded': True,
+    'icons': {
+        'proyectos.proyecto': 'fas fa-briefcase',
+        'proyectos.proyectoimagen': 'fas fa-images',
+        'auth.user': 'fas fa-user',
+        'auth.group': 'fas fa-users',
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,6 +148,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'

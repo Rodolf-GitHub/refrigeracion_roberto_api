@@ -1,0 +1,55 @@
+/* Inline de imágenes responsive */
+.dynamic-imagenes .form-row,
+#imagenes-group .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+#imagenes-group .tabular td,
+#imagenes-group .tabular th {
+    vertical-align: middle;
+}
+
+/* Input de archivo responsive */
+#imagenes-group input[type="file"] {
+    max-width: 100%;
+    width: 100%;
+}
+
+/* Preview responsive */
+#imagenes-group .field-preview_imagen img {
+    max-width: 100%;
+    max-height: 120px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* En móvil, apilar columnas */
+@media (max-width: 768px) {
+    #imagenes-group .tabular thead {
+        display: none;
+    }
+
+    #imagenes-group .tabular tbody tr {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        padding: 10px;
+    }
+
+    #imagenes-group .tabular td {
+        display: block;
+        width: 100% !important;
+        padding: 4px 0;
+        border: none;
+    }
+
+    #imagenes-group .tabular td.original,
+    #imagenes-group .tabular td.delete {
+        text-align: left;
+    }
+}
