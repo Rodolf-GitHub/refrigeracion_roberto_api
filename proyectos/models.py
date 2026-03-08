@@ -4,7 +4,8 @@ from django.db.models.signals import post_delete, pre_save
 from django.dispatch import receiver
 
 
-MAX_PROYECTOS = 100
+MAX_PROYECTOS = 50
+MAX_IMAGENES_POR_PROYECTO = 10
 MAX_IMAGE_SIZE_BYTES = 10 * 1024 * 1024
 
 
@@ -33,6 +34,13 @@ class ProyectoImagen(models.Model):
 
         if self.imagen and self.imagen.size > MAX_IMAGE_SIZE_BYTES:
             raise ValidationError({'imagen': 'La imagen no puede superar 10MB.'})
+
+        if not self.pk and self.proyecto_id:
+            cantidad = ProyectoImagen.objects.filter(proyecto_id=self.proyecto_id).count()
+            if cantidad >= MAX_IMAGENES_POR_PROYECTO:
+                raise ValidationError(
+                    f'Un proyecto no puede tener más de {MAX_IMAGENES_POR_PROYECTO} imágenes.'
+                )
 
     def save(self, *args, **kwargs):
         self.full_clean()
