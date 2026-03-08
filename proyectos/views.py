@@ -4,7 +4,7 @@ from .models import Proyecto
 
 
 def lista_proyectos(request):
-	proyectos = Proyecto.objects.all()
+	proyectos = Proyecto.objects.prefetch_related('imagenes').all()
 	data = []
 
 	for proyecto in proyectos:
@@ -14,7 +14,11 @@ def lista_proyectos(request):
 				'nombre': proyecto.nombre,
 				'descripcion': proyecto.descripcion,
 				'fecha': proyecto.fecha,
-				'imagen': request.build_absolute_uri(proyecto.imagen.url) if proyecto.imagen else None,
+				'imagenes': [
+					request.build_absolute_uri(img.imagen.url)
+					for img in proyecto.imagenes.all()
+					if img.imagen
+				],
 			}
 		)
 
